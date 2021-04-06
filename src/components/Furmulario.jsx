@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 // aplicamos destructurig para pasarle la funcion crear cita que viene desde App.js
 const Formulario = ({crearCita}) => {
@@ -8,7 +9,7 @@ const Formulario = ({crearCita}) => {
     propietario: "",
     fecha: "",
     hora: "",
-    sintomas: "",
+    sintomas: ""
   });
 
   //use Satate para el error
@@ -48,7 +49,13 @@ const Formulario = ({crearCita}) => {
     crearCita(cita);
 
     //reiniciamos el form
-
+    actualizarCita({
+      mascota: "",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: ""
+    })
   };
 
 
@@ -116,5 +123,12 @@ const Formulario = ({crearCita}) => {
     </Fragment>
   );
 };
+
+//propTypes documentando el codigo, o saber que son y cuales son las funciones.
+
+Formulario.propTypes = {
+  crearCita: PropTypes.func.isRequired
+}
+
 
 export default Formulario;
